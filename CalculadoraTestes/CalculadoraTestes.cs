@@ -54,4 +54,22 @@ public class CalculadoraTestes
         // Assert
         Assert.True(resultado);
     }
+
+
+    [Theory]
+    [InlineData(new int[] {2, 4})]
+    [InlineData(new int[] {6, 8, 10})]
+    public void DeveVerificarSeOsArraysDeNumerosSaoParesERetornarTrue(int[] numeros)
+    {
+        // Act / Assert
+        
+        /* Método 1
+        foreach(var numero in numeros)
+            Assert.True(_calc.EhPar(numero));
+        */
+
+        //Método refatorado
+        Assert.All(numeros, num => Assert.True(_calc.EhPar(num)));
+        
+    }
 }
